@@ -51,4 +51,12 @@ describe("Testing the components",()=>{
         element = screen.getByText(/Title Change Happened/i)
         expect(element).toBeInTheDocument()
     })
+
+    test('color must be change upon Change theme',()=>{
+        element = screen.getByRole('button',{name:/Change Theme/i})
+        fireEvent.click(element);
+        
+        element = screen.getByText(/First React App/i);
+        expect(element).toHaveStyle({backgroundColor: "blue",padding :"50px"}) 
+    })
 })

@@ -2,11 +2,12 @@ import {useState} from 'react'
 
 const App = ({title})=>{
   const [display,setDisplay]=useState(title)
+  const [theme,setTheme]=useState('yellow')
 
   return(
-       <div style={{backgroundColor: "yellow",padding :"50px"}}>
+       <div style={{backgroundColor: theme,padding :"50px"}}>
           {display}
-          <button>Change Theme</button>
+          <button onClick={()=>setTheme('blue')}>Change Theme</button>
           <button onClick={()=>setDisplay('Title Change Happened')}>Change Title</button>
        </div>
   )
