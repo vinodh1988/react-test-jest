@@ -1,28 +1,54 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen ,fireEvent } from '@testing-library/react';
 import App from './App';
 
 describe("Testing the components",()=>{
 
-    test("App Component rendered Correctly",()=>{
-        render(<App title="First React App" />);
+    var element;
 
-        let element = screen.getByText(/First React App/i);
-                        
+    beforeEach(()=>{
+       render(<App title="First React App"/>)
+    });
+
+    test("App Component rendered Correctly",()=>{
+      
+    
+        element = screen.getByText(/First React App/i);              
         
         expect(element).toBeInTheDocument();
 
-        render(<App title="India"/>)
+        element=  render(<App title="India"/>)
          element = screen.getByText(/India/i);
                         
         
         expect(element).toBeInTheDocument();
+        
 
 
     })
 
     test("style must be applied",()=>{
-        render(<App title="First React APP"/>)
-        let element = screen.getByText(/First React App/i);
+   
+        element = screen.getByText(/First React App/i);
         expect(element).toHaveStyle({backgroundColor: "yellow",padding :"50px"})         
+    })
+
+    test("change Theme Button must Exist",()=>{
+      
+        element = screen.getByRole('button',{name:/Change Theme/i})
+        expect(element).toBeInTheDocument(); 
+    })
+
+    test("change Title Button must Exist",()=>{
+      
+        element = screen.getByRole('button',{name:/Change Title/i})
+        expect(element).toBeInTheDocument(); 
+    })
+
+    test('title must be changed upon Button event',()=>{
+          
+        element = screen.getByRole('button',{name:/Change Title/i})
+        fireEvent.click(element)  //button would be clicked
+        element = screen.getByText(/Title Change Happened/i)
+        expect(element).toBeInTheDocument()
     })
 })
