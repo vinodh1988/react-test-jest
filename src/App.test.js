@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import { AppData } from './DataStore/Store';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('General test Cases',()=>{
+
+  test('title should be correct',()=>{
+    expect(AppData.appname).toBe("First React App");
+  })
+
+  test("Number of Programmers should be 4",()=>{
+    expect(AppData.people.length).toEqual(4);
+  })
+})
