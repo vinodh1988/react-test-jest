@@ -3,3 +3,11 @@ export const AppData ={
     people : ["George","Roger","Vinscent","Peter"]
 }
 
+
+export function dataProvider(p){
+
+    setTimeout(()=>p("hello!!!"),2000)
+   
+ }
+ 
+ 
