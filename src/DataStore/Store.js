@@ -1,8 +1,8 @@
 export const AppData ={
     appname : "First React App",
-    people : ["George","Roger","Vinscent","Peter"]
+    people : ["George","Roger","Vinscent","Peter"],
+    context: "nothing yet"
 }
-
 
 export function dataProvider(p){
 
@@ -11,3 +11,13 @@ export function dataProvider(p){
  }
  
  
+export function inputProcess(a){
+    if(a%20==0)
+      throw Error();
+    else
+      console.log("Data Processed")
+}
+
+export function contextProcess(input){
+   AppData.context=input+" Processed";
+}
