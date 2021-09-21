@@ -22,7 +22,7 @@ describe('General test Cases',()=>{
   });
 
   test("Testing Exceptions",()=>{
-      result=inputProcess(40);  
-      expect(result).toThrow(error)
+        
+      expect(()=>{inputProcess(40)}).toThrow(Error)
   });
 })

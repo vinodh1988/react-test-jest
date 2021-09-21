@@ -1,4 +1,4 @@
-import { render, screen ,fireEvent } from '@testing-library/react';
+import { render, screen ,fireEvent,within } from '@testing-library/react';
 import App from './App';
 
 describe("Testing the components",()=>{
@@ -58,5 +58,20 @@ describe("Testing the components",()=>{
         
         element = screen.getByText(/First React App/i);
         expect(element).toHaveStyle({backgroundColor: "blue",padding :"50px"}) 
+    })
+
+    test('h1 should have people',()=>{
+        element = screen.getByRole('heading');
+        expect(element).toHaveTextContent(/People/i)
+    })
+
+    test('list should have elements',()=>{
+        element = render(<App title="Fresh title"/>)
+        const target=element.container.querySelector('#home')
+
+        expect(target.textContent).toContain('Fresh title');
+        const {getAllByRole}=within(target)
+            const items=getAllByRole("listitem");
+        expect(items.length).toBeGreaterThanOrEqual(1);
     })
 })
