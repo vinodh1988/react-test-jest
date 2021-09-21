@@ -61,8 +61,8 @@ describe("Testing the components",()=>{
     })
 
     test('h1 should have people',()=>{
-        element = screen.getByRole('heading');
-        expect(element).toHaveTextContent(/People/i)
+        element = screen.getAllByRole('heading');
+        expect(element[0]).toHaveTextContent(/People/i)
     })
 
     test('list should have elements',()=>{

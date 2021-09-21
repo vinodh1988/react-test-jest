@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import DataDisplay from './DataDisplay'
 import { AppData } from './DataStore/Store'
 
 const App = ({title})=>{
@@ -12,8 +13,10 @@ const App = ({title})=>{
           <ul>
              {AppData.people.map(x=><li key={x}>{x}</li>)}
           </ul>
+         <DataDisplay/>
           <button onClick={()=>setTheme('blue')}>Change Theme</button>
           <button onClick={()=>setDisplay('Title Change Happened')}>Change Title</button>
+         
        </div>
   )
 }

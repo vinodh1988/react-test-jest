@@ -1,7 +1,8 @@
 export const AppData ={
     appname : "First React App",
     people : ["George","Roger","Vinscent","Peter"],
-    context: "nothing yet"
+    context: "nothing yet",
+    userdata:{name:"Krishna", city:"Mumbai"}
 }
 
 export function dataProvider(p){
@@ -20,4 +21,16 @@ export function inputProcess(a){
 
 export function contextProcess(input){
    AppData.context=input+" Processed";
+}
+
+export function randomUserProvider(){
+    return {name:"Peter",city:"Chennai"}
+}
+
+export function asyncUserProvider(){
+    return new Promise(
+      (resolve,reject)=>{
+        setTimeout(() =>resolve(randomUserProvider()),500)
+      }
+    )
 }
