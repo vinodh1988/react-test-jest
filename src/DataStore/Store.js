@@ -24,10 +24,17 @@ export function contextProcess(input){
 }
 
 export function randomUserProvider(){
-    return {name:"Peter",city:"Chennai"}
+  const users=[
+     {name:"Peter",city:"Chennai"},
+     {name:"Roger",city:"Jaipur"},
+     {name:"Mukul",city:"Nagpur"},
+     {name:"Mahesh",city:"Mumbai"},
+     {name:"Rakesh",city:"Chennai"}
+  ]
+    return users[Math.round(Math.random()*4)]
 }
 
-export function asyncUserProvider(){
+export const asyncUserProvider=() => {
     return new Promise(
       (resolve,reject)=>{
         setTimeout(() =>resolve(randomUserProvider()),500)

@@ -1,5 +1,9 @@
 import { render, screen ,fireEvent,within,waitFor } from '@testing-library/react';
 import DataDisplay from './DataDisplay';
+import * as mod from './DataStore/Store';
+
+//const testedObject=jest.spyOn(mod,'asyncUserProvider')
+
 
 describe('Data Async component Test',()=>{
     
@@ -13,6 +17,12 @@ describe('Data Async component Test',()=>{
 
     test('event should fire and give result',async ()=>{
         render(<DataDisplay/>)
+        const testedObject=jest.spyOn(mod,'asyncUserProvider').mockImplementation(()=>{
+        
+            return new Promise((resolve,reject)=>{
+              resolve({name:'Peter',city:'Chennai'})
+            });
+        })
         let element= screen.getAllByRole('button')
         expect(screen.getByText(/Krishna/i)).toBeInTheDocument();
         fireEvent.click(element[0])
@@ -20,5 +30,8 @@ describe('Data Async component Test',()=>{
 
         expect(screen.getByText(/Peter/i)).toBeInTheDocument();
         expect(screen.getByText(/Peter/i)).toBeInTheDocument();
+        expect(testedObject).toBeCalledTimes(1);
     })
+
+    
 })
